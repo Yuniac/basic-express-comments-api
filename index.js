@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 const { apiRouter } = require("./router/api/comments");
 const { router } = require("./router/user/comments");
