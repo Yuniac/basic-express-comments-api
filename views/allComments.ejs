@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>comments</title>
+	</head>
+	<body>
+		<h1>Our database has <%= comments.length %> comment(s)</h1>
+		<div class="comments">
+			<ul>
+				<% for( let i = 0; i < comments.length; i++ ) { %>
+				<h2>
+					Author: <u> <%= comments[i].user %> </u>
+					<b> Says: </b>
+					<u> <span> <%= comments[i].comment %> </span> </u>.
+					<a href="/comments/<%= comments[i].id %>">Read more</a>
+				</h2>
+				<a href="/comments/<%= comments[i].id %>/edit">Edit This comment</a>
+				<% } %>
+			</ul>
+		</div>
+		<h2>Want to add a comment? <a href="comments/new">go here!</a></h2>
+		<a href="/">Go back to our home page</a>
+	</body>
+</html>

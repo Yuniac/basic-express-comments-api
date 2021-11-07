@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Edit your comment</title>
+	</head>
+	<h1>
+		<h1>Old comment: <%= comment.comment %></h1>
+		<form>
+			<textarea name="comment" id="<%= comment.id %>" cols="30" rows="10" placeholder="enter new comment..."></textarea>
+			<button>Save</button>
+		</form>
+		<script>
+			const form = document.querySelector("form");
+			const textarea = document.getElementById("<%= comment.id %>");
+			form.addEventListener("submit", (e) => {
+				e.preventDefault();
+				fetch(`/comments/${textarea.id}`, {
+					method: "PATCH",
+					headers: {
+						"Content-Type": "application/json",
+						accept: "application/json",
+                        "Access-Control-Origin": "*"
+					},
+					body: JSON.stringify({
+						comment: textarea.value,
+					}),
+				}).then((e) => console.log(e)).then(() => {
+                    window.location.href = "/comments"
+                });
+			});
+		</script>
+	</body>
+</html>
