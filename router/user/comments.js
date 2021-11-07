@@ -35,4 +35,12 @@ router.patch("/comments/:id", (req, res) => {
 	commentToEdit.comment = newValue;
 	res.redirect("/comments");
 });
+
+router.delete("/comments/:id/delete", (req, res) => {
+	const { id } = req.body;
+	const commnetToDelete = comments.findIndex((comment) => comment.id === id);
+	console.log(id, commnetToDelete);
+	comments.splice(commnetToDelete, 1);
+	res.redirect("/comments");
+});
 module.exports = { router };

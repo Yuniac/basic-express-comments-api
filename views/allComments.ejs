@@ -13,15 +13,39 @@
 				<% for( let i = 0; i < comments.length; i++ ) { %>
 				<h2>
 					Author: <u> <%= comments[i].user %> </u>
-					<b> Says: </b>
-					<u> <span> <%= comments[i].comment %> </span> </u>.
-					<a href="/comments/<%= comments[i].id %>">Read more</a>
+					Says:
+					<u> <%= comments[i].comment %> </u>.
 				</h2>
-				<a href="/comments/<%= comments[i].id %>/edit">Edit This comment</a>
+				<br />
+				<br />
+				<a href="/comments/<%= comments[i].id %>">Read more</a>
+				<a href="/comments/<%= comments[i].id %>/edit">Edit this comment</a>
+				<br />
+				<br />
+				<button id="<%=comments[i].id %>" onclick="deleteComment(this)">Delete</button>
 				<% } %>
 			</ul>
 		</div>
 		<h2>Want to add a comment? <a href="comments/new">go here!</a></h2>
 		<a href="/">Go back to our home page</a>
+
+		<script>
+			function deleteComment(id) {
+				console.log(id);
+				fetch(`/comments/${id}/delete`, {
+					method: "delete",
+					headers: {
+						"Content-Type": "application/json",
+						accept: "application/json",
+						"Access-Control-Origin": "*",
+					},
+					body: JSON.stringify({
+						id,
+					}),
+				}).then(() => {
+					window.location.href = "/comments";
+				});
+			}
+		</script>
 	</body>
 </html>
