@@ -13,4 +13,8 @@ no data is persistent right now
 
 # how does it work?
 
-using templating language and API end points, user gets redirected around the application to read, edit existing comments or create new ones
+The plan is to learn how to make a CRUD program with it but for now:
+
+using templating language and API end points, user gets redirected around the application to read, edit existing comments or create new ones.
+
+Comments are separated using universally unique identifiers, a package called `UUID`. Those IDs are recreated each time the server restarts, as I said nothing is persistent right now
