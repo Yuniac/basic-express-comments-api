@@ -12,5 +12,8 @@
 	"scripts": {
 		"start": "nodemon index",
 		"build": "node index"
+	},
+	"engines": {
+		"node": "v14.17.0"
 	}
 }
